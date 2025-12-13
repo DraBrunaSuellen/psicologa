@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Psicóloga Bruna Suellen Quintas de Souza | Manaus e Online</title>
   <meta name="description" content="Atendimento psicológico presencial em Manaus e online para todo o Brasil com a psicóloga Bruna Suellen Quintas de Souza (CRP 20/10864). Ansiedade, depressão, relacionamentos e autoestima.">
+
   <style>
     :root {
       --cor-primaria: #4f46e5;
@@ -19,11 +20,9 @@
       --sombra: 0 10px 30px rgba(15, 23, 42, 0.12);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: auto; overflow-y: auto; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -32,25 +31,16 @@
       line-height: 1.6;
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
+    /* ✅ Header agora nao encobre o resto da pagina */
     header {
       background: linear-gradient(135deg, #eef2ff, #fef3c7);
-      padding: 1.5rem 1.25rem 2rem;
       border-bottom: 1px solid rgba(148, 163, 184, 0.4);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background-color: rgba(238, 242, 255, 0.9);
+      position: relative;
+      z-index: 0;
+      padding: 0; /* padding vai ficar no topbar e na area do hero */
     }
 
     .container {
@@ -59,12 +49,22 @@
       padding: 0 1.25rem;
     }
 
+    /* ✅ Menu fixo (sticky) apenas na barra superior */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(238, 242, 255, 0.92);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 1.5rem;
+      padding: 1rem 0;
     }
 
     .logo {
@@ -82,9 +82,7 @@
       color: #6b7280;
     }
 
-    .logo span:last-child {
-      color: #111827;
-    }
+    .logo span:last-child { color: #111827; }
 
     .nav-links {
       display: flex;
@@ -93,9 +91,7 @@
       color: #4b5563;
     }
 
-    .nav-links a:hover {
-      color: var(--cor-primaria);
-    }
+    .nav-links a:hover { color: var(--cor-primaria); }
 
     .btn-whats-nav {
       padding: 0.5rem 0.9rem;
@@ -113,12 +109,12 @@
       white-space: nowrap;
     }
 
-    .btn-whats-nav:hover {
-      background: var(--cor-primaria-escura);
-    }
+    .btn-whats-nav:hover { background: var(--cor-primaria-escura); }
+    .btn-whats-nav span { font-size: 1rem; }
 
-    .btn-whats-nav span {
-      font-size: 1rem;
+    /* ✅ Hero fica no header, mas nao sticky */
+    .hero-wrap {
+      padding: 1.25rem 0 2rem;
     }
 
     .hero {
@@ -136,9 +132,7 @@
       color: #111827;
     }
 
-    .hero-text h1 span {
-      color: var(--cor-primaria);
-    }
+    .hero-text h1 span { color: var(--cor-primaria); }
 
     .hero-text p {
       color: var(--cor-texto-suave);
@@ -192,9 +186,7 @@
       cursor: pointer;
     }
 
-    .btn-primario:hover {
-      background: var(--cor-primaria-escura);
-    }
+    .btn-primario:hover { background: var(--cor-primaria-escura); }
 
     .btn-secundario {
       padding: 0.8rem 1.2rem;
@@ -220,9 +212,7 @@
       color: #6b7280;
     }
 
-    .hero-info strong {
-      color: #111827;
-    }
+    .hero-info strong { color: #111827; }
 
     .hero-card {
       background: var(--branco);
@@ -277,14 +267,9 @@
       margin-top: 0.4rem;
     }
 
-    section {
-      padding: 2.5rem 0;
-    }
+    section { padding: 2.5rem 0; }
 
-    .secao {
-      max-width: 960px;
-      margin: 0 auto;
-    }
+    .secao { max-width: 960px; margin: 0 auto; }
 
     .secao-titulo {
       font-size: 1.4rem;
@@ -340,7 +325,6 @@
       margin-top: 0.15rem;
     }
 
-    /* Foto na seção Sobre */
     .sobre-coluna-direita {
       display: flex;
       flex-direction: column;
@@ -360,9 +344,7 @@
       object-fit: cover;
     }
 
-    .faq-item {
-      margin-bottom: 1rem;
-    }
+    .faq-item { margin-bottom: 1rem; }
 
     .faq-pergunta {
       font-weight: 600;
@@ -419,125 +401,89 @@
     }
 
     @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        max-width: 360px;
-        margin: 0 auto;
-      }
-
-      nav {
-        flex-wrap: wrap;
-      }
-
-      .nav-links {
-        display: none;
-      }
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { max-width: 360px; margin: 0 auto; }
+      nav { flex-wrap: wrap; }
+      .nav-links { display: none; }
     }
 
     @media (max-width: 640px) {
-      header {
-        padding: 1rem 0.8rem 1.5rem;
-      }
-
-      .container {
-        padding: 0 0.8rem;
-      }
-
-      .hero {
-        padding-bottom: 2rem;
-      }
-
-      section {
-        padding: 2rem 0;
-      }
-
-      .grid-2 {
-        grid-template-columns: 1fr;
-      }
-
-      .cta-final {
-        padding: 2rem 1.25rem 2.5rem;
-      }
+      .container { padding: 0 0.8rem; }
+      .hero { padding-bottom: 2rem; }
+      section { padding: 2rem 0; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .cta-final { padding: 2rem 1.25rem 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Cabeçalho -->
   <header>
-    <div class="container">
-      <nav>
-        <div class="logo">
-          <span>Psicóloga</span>
-          <span>Bruna Suellen Quintas de Souza</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:0.75rem;">
-          <div class="nav-links">
-            <a href="#sobre">Sobre</a>
-            <a href="#atendimento">Atendimento</a>
-            <a href="#faq">Perguntas</a>
+    <div class="topbar">
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <span>Psicóloga</span>
+            <span>Bruna Suellen Quintas de Souza</span>
           </div>
-          <a href="https://wa.me/559591411397?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+as+consultas+psicol%C3%B3gicas."
-             class="btn-whats-nav" target="_blank" rel="noopener noreferrer">
-            <span>💬</span> Agendar sessão
-          </a>
-        </div>
-      </nav>
-
-      <!-- Hero -->
-      <div class="hero">
-        <div class="hero-text">
-          <div class="hero-badges">
-            <span class="badge">Atendimento presencial em Manaus/AM</span>
-            <span class="badge badge-alt">Atendimento online para todo o Brasil</span>
-          </div>
-          <h1>
-            Psicoterapia para <span>ansiedade, relacionamentos e autoestima</span>
-          </h1>
-          <p>
-            Acolhimento, escuta qualificada e acompanhamento psicológico para adultos e adolescentes
-            que desejam aliviar a ansiedade, organizar pensamentos e construir uma vida com mais sentido.
-          </p>
-
-          <div class="hero-cta">
-            <a href="https://wa.me/559591411397?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+consulta+psicol%C3%B3gica."
-               class="btn-primario" target="_blank" rel="noopener noreferrer">
-              💬 Falar com a Psicóloga no WhatsApp
-            </a>
-            <a href="#atendimento" class="btn-secundario">
-              ℹ️ Como funcionam as sessões
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <div class="nav-links">
+              <a href="#sobre">Sobre</a>
+              <a href="#atendimento">Atendimento</a>
+              <a href="#faq">Perguntas</a>
+            </div>
+            <a href="https://wa.me/559591411397?text=Ol%C3%A1%2C+gostaria+de+saber+mais+sobre+as+consultas+psicol%C3%B3gicas."
+               class="btn-whats-nav" target="_blank" rel="noopener noreferrer">
+              <span>💬</span> Agendar sessão
             </a>
           </div>
+        </nav>
+      </div>
+    </div>
 
-          <div class="hero-info">
-            <div><strong>Bruna Suellen Quintas de Souza</strong> • Psicóloga • CRP 20/10864</div>
-            <div>Atendimento ético, sigiloso e humanizado.</div>
-          </div>
-        </div>
+    <div class="hero-wrap">
+      <div class="container">
+        <div class="hero">
+          <div class="hero-text">
+            <div class="hero-badges">
+              <span class="badge">Atendimento presencial em Manaus/AM</span>
+              <span class="badge badge-alt">Atendimento online para todo o Brasil</span>
+            </div>
+            <h1>Psicoterapia para <span>ansiedade, relacionamentos e autoestima</span></h1>
+            <p>
+              Acolhimento, escuta qualificada e acompanhamento psicológico para adultos e adolescentes
+              que desejam aliviar a ansiedade, organizar pensamentos e construir uma vida com mais sentido.
+            </p>
 
-        <div class="hero-card">
-          <div class="hero-foto">
-            <!-- FOTO DO CONSULTÓRIO -->
-            <!-- Salve como: imagens/no-escritorio.jpg -->
-            <img src="imagens/no-escritorio.jpg"
-                 alt="Psicóloga Bruna Suellen Quintas de Souza em seu consultório">
+            <div class="hero-cta">
+              <a href="https://wa.me/559591411397?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+consulta+psicol%C3%B3gica."
+                 class="btn-primario" target="_blank" rel="noopener noreferrer">
+                💬 Falar com a Psicóloga no WhatsApp
+              </a>
+              <a href="#atendimento" class="btn-secundario">ℹ️ Como funcionam as sessões</a>
+            </div>
+
+            <div class="hero-info">
+              <div><strong>Bruna Suellen Quintas de Souza</strong> • Psicóloga • CRP 20/10864</div>
+              <div>Atendimento ético, sigiloso e humanizado.</div>
+            </div>
           </div>
-          <h2>Psicóloga em Manaus e online</h2>
-          <p>Atendimento clínico individual para adultos e adolescentes.</p>
-          <p>Foco em ansiedade, depressão, relacionamentos, autoestima e questões emocionais do dia a dia.</p>
-          <small>CRP 20/10864 • Consultório em Manaus/AM • Atendimentos por videochamada para todo o Brasil.</small>
-          <div class="selo">
-            <span>🛡️</span> Sigilo garantido e Código de Ética do Psicólogo
+
+          <div class="hero-card">
+            <div class="hero-foto">
+              <img src="imagens/no-escritorio.jpg" alt="Psicóloga Bruna Suellen Quintas de Souza em seu consultório">
+            </div>
+            <h2>Psicóloga em Manaus e online</h2>
+            <p>Atendimento clínico individual para adultos e adolescentes.</p>
+            <p>Foco em ansiedade, depressão, relacionamentos, autoestima e questões emocionais do dia a dia.</p>
+            <small>CRP 20/10864 • Consultório em Manaus/AM • Atendimentos por videochamada para todo o Brasil.</small>
+            <div class="selo"><span>🛡️</span> Sigilo garantido e Código de Ética do Psicólogo</div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Sobre -->
   <section id="sobre">
     <div class="container secao">
       <h2 class="secao-titulo">Sobre a Psicóloga</h2>
@@ -567,10 +513,7 @@
 
         <div class="sobre-coluna-direita">
           <div class="sobre-foto">
-            <!-- FOTO DELA EM CLOSE -->
-            <!-- Salve como: imagens/bruna-sobre.jpg -->
-            <img src="imagens/bruna-sobre.jpg"
-                 alt="Psicóloga Bruna Suellen Quintas de Souza">
+            <img src="imagens/bruna-sobre.jpg" alt="Psicóloga Bruna Suellen Quintas de Souza">
           </div>
 
           <div class="card">
@@ -589,7 +532,6 @@
     </div>
   </section>
 
-  <!-- Atendimento -->
   <section id="atendimento">
     <div class="container secao">
       <h2 class="secao-titulo">Como funcionam as sessões</h2>
@@ -629,7 +571,6 @@
     </div>
   </section>
 
-  <!-- Benefícios -->
   <section>
     <div class="container secao">
       <h2 class="secao-titulo">O que você pode trabalhar na terapia</h2>
@@ -653,16 +594,13 @@
     </div>
   </section>
 
-  <!-- FAQ -->
   <section id="faq">
     <div class="container secao">
       <h2 class="secao-titulo">Perguntas frequentes</h2>
 
       <div class="faq-item">
         <div class="faq-pergunta">Quanto tempo dura cada sessão?</div>
-        <div class="faq-resposta">
-          Em média, cada sessão dura <strong>50 minutos</strong>.
-        </div>
+        <div class="faq-resposta">Em média, cada sessão dura <strong>50 minutos</strong>.</div>
       </div>
 
       <div class="faq-item">
@@ -705,7 +643,6 @@
     </div>
   </section>
 
-  <!-- CTA Final -->
   <section>
     <div class="container">
       <div class="cta-final">
