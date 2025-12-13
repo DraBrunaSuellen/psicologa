@@ -236,23 +236,13 @@
       width: 100%;
       aspect-ratio: 4 / 5;
       border-radius: 18px;
-      background: linear-gradient(145deg, #e0e7ff, #fef9c3);
       position: relative;
       overflow: hidden;
       margin-bottom: 1rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
+      background: #e5e7eb;
     }
 
-    .hero-foto-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-    }
-
-    .hero-foto-inner img {
+    .hero-foto img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -530,12 +520,10 @@
 
         <div class="hero-card">
           <div class="hero-foto">
-            <div class="hero-foto-inner">
-              <!-- FOTO DO CONSULTÓRIO EM BASE64 -->
-              <img
-                src="data:image/jpeg;base64,AQUI_BASE64_NO_ESCRITORIO"
-                alt="Psicóloga Bruna Suellen Quintas de Souza em seu consultório">
-            </div>
+            <!-- FOTO DO CONSULTÓRIO -->
+            <!-- Salve como: imagens/no-escritorio.jpg -->
+            <img src="imagens/no-escritorio.jpg"
+                 alt="Psicóloga Bruna Suellen Quintas de Souza em seu consultório">
           </div>
           <h2>Psicóloga em Manaus e online</h2>
           <p>Atendimento clínico individual para adultos e adolescentes.</p>
@@ -579,10 +567,10 @@
 
         <div class="sobre-coluna-direita">
           <div class="sobre-foto">
-            <!-- FOTO DELA EM CLOSE EM BASE64 -->
-            <img
-              src="data:image/jpeg;base64,AQUI_BASE64_SOBRE_ELA"
-              alt="Psicóloga Bruna Suellen Quintas de Souza">
+            <!-- FOTO DELA EM CLOSE -->
+            <!-- Salve como: imagens/bruna-sobre.jpg -->
+            <img src="imagens/bruna-sobre.jpg"
+                 alt="Psicóloga Bruna Suellen Quintas de Souza">
           </div>
 
           <div class="card">
